@@ -19,9 +19,18 @@ public class mobController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {        
 	  //program the bot here
+	  if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) < 1.5){
+	  	player.GetComponent<CharacterAttributes>().takeDamage(damage);
+
+		if (player.transform.position.x > gameObject.transform.position.x){
+			characterRigidbody.AddForce(new Vector2(-1*5f, 5f), ForceMode2D.Impulse);
+		}
+	  	if (player.transform.position.x < gameObject.transform.position.x){
+	  		characterRigidbody.AddForce(new Vector2(5f, 5f), ForceMode2D.Impulse);
+	 	}
+	  }
     }
 
     void FixedUpdate()
@@ -32,16 +41,19 @@ public class mobController : MonoBehaviour
 	  if (player.transform.position.x < gameObject.transform.position.x){
 		characterTransform.Translate(-1*Time.deltaTime, 0f, 0f);
 	  }
-	  if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) < 1.5){
-		player.GetComponent<CharacterAttributes>().takeDamage(damage);
-	  }
 	  //program the bot here
     }
 
     public void takeDamage(int damage)
     {
         Debug.Log("Mob took damage" + damage);
-        characterRigidbody.AddForce(new Vector2(5f, 5f), ForceMode2D.Impulse);
+	  if (player.transform.position.x > gameObject.transform.position.x){
+		characterRigidbody.AddForce(new Vector2(-1*5f, 5f), ForceMode2D.Impulse);
+	  }
+	  if (player.transform.position.x < gameObject.transform.position.x){
+	  	characterRigidbody.AddForce(new Vector2(5f, 5f), ForceMode2D.Impulse);
+	  }
+        
         characterHealth -= damage;
     }
 }
