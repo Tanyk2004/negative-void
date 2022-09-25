@@ -11,8 +11,8 @@ public class mobController : MonoBehaviour
     public int damage = 10;
     public int characterHealth = 100;
 
-    public float timeBetweenAttack;
-    public float startTimeBetweenAttack;
+    public float timeBetweenAttack = 1;
+    public float startTimeBetweenAttack = 1;
 
     public Rigidbody2D characterRigidbody;
     // Start is called before the first frame update
