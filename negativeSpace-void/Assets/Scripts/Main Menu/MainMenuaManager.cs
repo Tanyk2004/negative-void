@@ -15,7 +15,7 @@ public class MainMenuaManager : MonoBehaviour
     {
         
     }
-
+    //starts MainScenes
     public void startGame(){
         SceneManager.LoadScene("MainScene");
     }
