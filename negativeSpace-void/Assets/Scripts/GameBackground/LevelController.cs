@@ -25,9 +25,9 @@ public class LevelController : MonoBehaviour
     public Sprite backgroundDay;
     public Sprite backgroundNight;
     
-    public SpriteRenderer player;
-    public Sprite playerPositive;
-    public Sprite playerNegative;
+    //public SpriteRenderer player;
+    //public Sprite playerPositive;
+    //public Sprite playerNegative;
 
     // Start is called before the first frame update
     void Start()
@@ -61,13 +61,13 @@ public class LevelController : MonoBehaviour
         if (dayActive)
         {
             background.sprite = backgroundNight;
-            player.sprite = playerNegative;
+           // player.sprite = playerNegative;
             dayActive = false;
         }
         else
         {
             background.sprite = backgroundDay;
-            player.sprite = playerPositive;
+           // player.sprite = playerPositive;
             dayActive = true;
         }
     }
