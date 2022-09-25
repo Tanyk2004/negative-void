@@ -12,6 +12,7 @@ public class attackDamage : MonoBehaviour
     public LayerMask whatIsEnemies;
     public int damage;
 
+    public Animator animator;
     void Update(){
 
         if (timeBetweenAttack <= 0){
@@ -25,7 +26,7 @@ public class attackDamage : MonoBehaviour
                 for( int i = 0; i < enemiesToDamage.Length; i++){
 
                     if( enemiesToDamage[i].gameObject.tag == "mob"){
-
+                        animator.SetTrigger("Attack");
                         enemiesToDamage[i].GetComponent<mobController>().takeDamage(damage);
                     }
                     
