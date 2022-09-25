@@ -25,6 +25,11 @@ public class LevelController : MonoBehaviour
     public Sprite backgroundDay;
     public Sprite backgroundNight;
     
+    [Header("Mob Settings")]
+    public GameObject mob;
+    public Transform mobSpawnPoint;
+    public int lowerBoundForce;
+    public int upperBoundForce;
     //public SpriteRenderer player;
     //public Sprite playerPositive;
     //public Sprite playerNegative;
@@ -41,7 +46,7 @@ public class LevelController : MonoBehaviour
         currentTime = currentTime + Time.deltaTime;
         int intTime = (int)currentTime;
         timerText.text = intTime.ToString();
-
+        if (Input.GetKeyDown(KeyCode.E)) SpawnMobs();
         if( currentTime >= secondsLastSwitched + secondsToSwitch){
             
             SwitchRealm();
@@ -63,6 +68,7 @@ public class LevelController : MonoBehaviour
             background.sprite = backgroundNight;
            // player.sprite = playerNegative;
             dayActive = false;
+            SpawnMobs();
         }
         else
         {
@@ -70,5 +76,11 @@ public class LevelController : MonoBehaviour
            // player.sprite = playerPositive;
             dayActive = true;
         }
+    }
+
+    private void SpawnMobs(){
+        Instantiate(mob, mobSpawnPoint.position, mobSpawnPoint.rotation);
+        float force = (float)Random.Range(lowerBoundForce, upperBoundForce);
+        mob.GetComponent<Rigidbody2D>().AddForce(new Vector2((-1.0f) * force, force), ForceMode2D.Impulse);
     }
 }
