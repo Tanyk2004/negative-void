@@ -10,29 +10,44 @@ public class mobController : MonoBehaviour
     [Header("Mob Settings")]
     public int damage = 10;
     public int characterHealth = 100;
+
+    public float timeBetweenAttack;
+    public float startTimeBetweenAttack;
+
     public Rigidbody2D characterRigidbody;
-    public Rigidbody2D playerRigidbody;
     // Start is called before the first frame update
+
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerRigidbody = player.GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
     void Update()
     {        
 	  //program the bot here
-	  if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) < 1.5){
-	  	player.GetComponent<CharacterAttributes>().takeDamage(damage);
 
-		if (player.transform.position.x > gameObject.transform.position.x){
-			characterRigidbody.AddForce(new Vector2(-1*5f, 5f), ForceMode2D.Impulse);
-		}
+    if (timeBetweenAttack <= 0){
+	if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) < 1.5){
+	  	player.GetComponent<CharacterAttributes>().takeDamage(damage);
+         
+	  	if (player.transform.position.x > gameObject.transform.position.x){
+	  		player.GetComponent<Rigidbody2D>().AddForce(new Vector2(5f, 5f), ForceMode2D.Impulse);              	
+			timeBetweenAttack = startTimeBetweenAttack;
+	  	}
 	  	if (player.transform.position.x < gameObject.transform.position.x){
-	  		characterRigidbody.AddForce(new Vector2(5f, 5f), ForceMode2D.Impulse);
-	 	}
+	  		player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1*5f, 5f), ForceMode2D.Impulse);              	
+			timeBetweenAttack = startTimeBetweenAttack;
+	  	}
+       } else {
+              timeBetweenAttack -= Time.deltaTime;
+       }
+
+
+
+	  
+
 	  }
     }
 
