@@ -5,8 +5,7 @@ using TMPro;
 
 public class LevelController : MonoBehaviour
 {
-    [Header("Component")]
-    public TextMeshProUGUI timerText;
+    
 
     [Header("Timer Settings")]
     public float currentTime;
@@ -22,17 +21,20 @@ public class LevelController : MonoBehaviour
     [Header("Realm Switch Settings")]
     public bool dayActive = true;
     public SpriteRenderer background;
+    public SpriteRenderer background2;
     public Sprite backgroundDay;
     public Sprite backgroundNight;
+    public SpriteRenderer Ground;
+    public SpriteRenderer Ground2;
+    public Sprite groundPositive;
+    public Sprite groundNegative;
     
     [Header("Mob Settings")]
     public GameObject mob;
     public Transform mobSpawnPoint;
     public int lowerBoundForce;
     public int upperBoundForce;
-    //public SpriteRenderer player;
-    //public Sprite playerPositive;
-    //public Sprite playerNegative;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +47,7 @@ public class LevelController : MonoBehaviour
     {
         currentTime = currentTime + Time.deltaTime;
         int intTime = (int)currentTime;
-        timerText.text = intTime.ToString();
+       
         if (Input.GetKeyDown(KeyCode.E)) SpawnMobs();
         if( currentTime >= secondsLastSwitched + secondsToSwitch){
             
@@ -66,14 +68,18 @@ public class LevelController : MonoBehaviour
         if (dayActive)
         {
             background.sprite = backgroundNight;
-           // player.sprite = playerNegative;
+            background2.sprite = backgroundNight;
+            Ground.sprite = groundNegative;
+            Ground2.sprite = groundNegative;
             dayActive = false;
             SpawnMobs();
         }
         else
         {
             background.sprite = backgroundDay;
-           // player.sprite = playerPositive;
+            background2.sprite = backgroundDay;
+            Ground.sprite = groundPositive;
+            Ground2.sprite = groundPositive;
             dayActive = true;
         }
     }

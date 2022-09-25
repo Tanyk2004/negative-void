@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class CharacterAttributes : MonoBehaviour
 {
     public int health;
     public int rage;
     public int tokens;
     public Slider healthBar;
-   
+    public int Score = 0;
+    [Header("UI")]
+    public TextMeshProUGUI scoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +55,10 @@ public class CharacterAttributes : MonoBehaviour
         }
         
     }
-     
- 
+    
+    public void addScore(int score)
+    {
+        this.Score += score; 
+         scoreText.text = "x"+this.Score.ToString();}
 
 }

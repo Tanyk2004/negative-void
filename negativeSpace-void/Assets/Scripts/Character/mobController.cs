@@ -16,6 +16,7 @@ public class mobController : MonoBehaviour
     public float startTimeBetweenAttack = 1;
     public Transform checkFall;
     public Rigidbody2D characterRigidbody;
+    public float moveSpeed = 10.0f;
     // Start is called before the first frame update
 
 
@@ -50,6 +51,10 @@ public class mobController : MonoBehaviour
 
     void FixedUpdate()
     {
+      if( isFallen()){
+        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        gameObject.transform.rotation = new Quaternion(0,0,0,0);
+      }
         if (player.transform.position.x > gameObject.transform.position.x){
 		characterTransform.Translate(Time.deltaTime, 0f, 0f);
 	  }
@@ -63,7 +68,7 @@ public class mobController : MonoBehaviour
     {
         Debug.Log("Mob took damage" + damage);
 	  if (player.transform.position.x > gameObject.transform.position.x){
-		characterRigidbody.AddForce(new Vector2(-1*5f, 5f), ForceMode2D.Impulse);
+		  characterRigidbody.AddForce(new Vector2(-1*5f, 5f), ForceMode2D.Impulse);
 	  }
 	  if (player.transform.position.x < gameObject.transform.position.x){
 	  	characterRigidbody.AddForce(new Vector2(5f, 5f), ForceMode2D.Impulse);
@@ -83,6 +88,10 @@ public class mobController : MonoBehaviour
         }
 
         
+    }
+    private void Die(){
+      Destroy(gameObject);
+      player.GetComponent<CharacterAttributes>().addScore(10);
     }
     
     //creates Gizmos to help with debugging
