@@ -253,10 +253,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterTransform: {fileID: 493827887}
-  player: {fileID: 1502900532}
+  player: {fileID: 0}
   damage: 10
   characterHealth: 100
   characterRigidbody: {fileID: 493827886}
+  playerRigidbody: {fileID: 0}
 --- !u!61 &493827889
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1031,7 +1032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3430361543986039873, guid: 07ae80e430b73c341a2c0a58bc212943, type: 3}
       propertyPath: m_Mass
-      value: 0.3657458
+      value: 2.8672137
       objectReference: {fileID: 0}
     - target: {fileID: 3430361543986039873, guid: 07ae80e430b73c341a2c0a58bc212943, type: 3}
       propertyPath: m_Simulated
@@ -1053,9 +1054,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: PrefabMain
       objectReference: {fileID: 0}
+    - target: {fileID: 3430361543986039877, guid: 07ae80e430b73c341a2c0a58bc212943, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3430361543986039878, guid: 07ae80e430b73c341a2c0a58bc212943, type: 3}
       propertyPath: runSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430361543986039878, guid: 07ae80e430b73c341a2c0a58bc212943, type: 3}
+      propertyPath: jumpSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430361543986039878, guid: 07ae80e430b73c341a2c0a58bc212943, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 1501164175}
+    - target: {fileID: 3430361543986039878, guid: 07ae80e430b73c341a2c0a58bc212943, type: 3}
+      propertyPath: groundRange
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430361543986039878, guid: 07ae80e430b73c341a2c0a58bc212943, type: 3}
+      propertyPath: horizontalMove
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430361543986039878, guid: 07ae80e430b73c341a2c0a58bc212943, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3430361543986039879, guid: 07ae80e430b73c341a2c0a58bc212943, type: 3}
       propertyPath: m_Size.y

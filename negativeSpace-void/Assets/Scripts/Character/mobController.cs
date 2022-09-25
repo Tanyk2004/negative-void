@@ -11,10 +11,13 @@ public class mobController : MonoBehaviour
     public int damage = 10;
     public int characterHealth = 100;
     public Rigidbody2D characterRigidbody;
+    public Rigidbody2D playerRigidbody;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerRigidbody = player.GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame

@@ -19,14 +19,15 @@ public class attackDamage : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.F)){
                 //attack
-                Debug.Log("Attack");
+                animator.SetTrigger("Attack");
+                
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, 
                 attackRange, whatIsEnemies);
 
                 for( int i = 0; i < enemiesToDamage.Length; i++){
 
                     if( enemiesToDamage[i].gameObject.tag == "mob"){
-                        animator.SetTrigger("Attack");
+                        
                         enemiesToDamage[i].GetComponent<mobController>().takeDamage(damage);
                     }
                     
