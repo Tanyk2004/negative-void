@@ -10,10 +10,11 @@ public class mobController : MonoBehaviour
     [Header("Mob Settings")]
     public int damage = 10;
     public int characterHealth = 100;
-
+    public float groundRange = 0.5f;
+    public LayerMask groundLayer;
     public float timeBetweenAttack = 1;
     public float startTimeBetweenAttack = 1;
-
+    public Transform checkFall;
     public Rigidbody2D characterRigidbody;
     // Start is called before the first frame update
 
@@ -30,7 +31,8 @@ public class mobController : MonoBehaviour
 
     if (timeBetweenAttack <= 0){
 	if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) < 1.5){
-	  	player.GetComponent<CharacterAttributes>().takeDamage(damage);
+	  	Debug.Log("Took From Player");
+      player.GetComponent<CharacterAttributes>().takeDamage(damage);
          
 	  	if (player.transform.position.x > gameObject.transform.position.x){
 	  		player.GetComponent<Rigidbody2D>().AddForce(new Vector2(5f, 5f), ForceMode2D.Impulse);              	
@@ -43,11 +45,6 @@ public class mobController : MonoBehaviour
        } else {
               timeBetweenAttack -= Time.deltaTime;
        }
-
-
-
-	  
-
 	  }
     }
 
@@ -73,5 +70,24 @@ public class mobController : MonoBehaviour
 	  }
         
         characterHealth -= damage;
+    }
+    private bool isFallen(){
+        Collider2D[] detectGround = Physics2D.OverlapCircleAll(checkFall.position, 
+                groundRange, groundLayer);
+        int collisionlength = detectGround.Length;
+        if (collisionlength > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+        
+    }
+    
+    //creates Gizmos to help with debugging
+    void OnDrawGizmosSelected(){
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(checkFall.position, groundRange);
     }
 }
