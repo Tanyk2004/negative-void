@@ -17,7 +17,17 @@ public class LevelController : MonoBehaviour
     public int randomizerUpperBound;
 
     private int secondsLastSwitched = 0;
-    private int secondsToSwitch = 30;
+    private int secondsToSwitch = 10;
+    
+    [Header("Realm Switch Settings")]
+    public bool dayActive = true;
+    public SpriteRenderer background;
+    public Sprite backgroundDay;
+    public Sprite backgroundNight;
+    
+    public SpriteRenderer player;
+    public Sprite playerPositive;
+    public Sprite playerNegative;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +58,17 @@ public class LevelController : MonoBehaviour
 
     private void SwitchRealm()
     {
-        Debug.Log("Switching Realm");
+        if (dayActive)
+        {
+            background.sprite = backgroundNight;
+            player.sprite = playerNegative;
+            dayActive = false;
+        }
+        else
+        {
+            background.sprite = backgroundDay;
+            player.sprite = playerPositive;
+            dayActive = true;
+        }
     }
 }
