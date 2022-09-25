@@ -253,6 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterTransform: {fileID: 493827887}
+  player: {fileID: 1502900532}
+  damage: 10
   characterHealth: 100
   characterRigidbody: {fileID: 493827886}
 --- !u!61 &493827889
