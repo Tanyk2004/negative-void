@@ -29,7 +29,7 @@ public class mobController : MonoBehaviour
     {        
 	  //program the bot here
 
-    if (timeBetweenAttack <= 0){
+    
 	if (Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) < 1.5){
 	  	Debug.Log("Took From Player");
       player.GetComponent<CharacterAttributes>().takeDamage(damage);
@@ -42,9 +42,7 @@ public class mobController : MonoBehaviour
 	  		player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1*5f, 5f), ForceMode2D.Impulse);              	
 			timeBetweenAttack = startTimeBetweenAttack;
 	  	}
-       } else {
-              timeBetweenAttack -= Time.deltaTime;
-       }
+       
 	  }
     }
 
