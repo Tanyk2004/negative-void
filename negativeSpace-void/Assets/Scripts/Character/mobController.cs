@@ -49,6 +49,9 @@ public class mobController : MonoBehaviour
 
     void FixedUpdate()
     {
+      if( characterHealth <= 0){
+        Die();
+      }
       if( isFallen()){
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         gameObject.transform.rotation = new Quaternion(0,0,0,0);
@@ -89,7 +92,7 @@ public class mobController : MonoBehaviour
     }
     private void Die(){
       Destroy(gameObject);
-      player.GetComponent<CharacterAttributes>().addScore(10);
+      player.GetComponent<CharacterAttributes>().addScore(1);
     }
     
     //creates Gizmos to help with debugging

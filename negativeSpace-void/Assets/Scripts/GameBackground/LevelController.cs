@@ -21,11 +21,9 @@ public class LevelController : MonoBehaviour
     [Header("Realm Switch Settings")]
     public bool dayActive = true;
     public SpriteRenderer background;
-    public SpriteRenderer background2;
     public Sprite backgroundDay;
     public Sprite backgroundNight;
     public SpriteRenderer Ground;
-    public SpriteRenderer Ground2;
     public Sprite groundPositive;
     public Sprite groundNegative;
     
@@ -68,7 +66,7 @@ public class LevelController : MonoBehaviour
         if (dayActive)
         {
             background.sprite = backgroundNight;
-            background2.sprite = backgroundNight;
+     
             Ground.sprite = groundNegative;
             Ground2.sprite = groundNegative;
             dayActive = false;
@@ -77,7 +75,7 @@ public class LevelController : MonoBehaviour
         else
         {
             background.sprite = backgroundDay;
-            background2.sprite = backgroundDay;
+         
             Ground.sprite = groundPositive;
             Ground2.sprite = groundPositive;
             dayActive = true;
